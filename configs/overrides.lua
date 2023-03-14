@@ -30,6 +30,7 @@ M.mason = {
     "html-lsp",
     "typescript-language-server",
     "deno",
+    "elixirls",
   },
 }
 
