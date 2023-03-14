@@ -54,6 +54,17 @@ local plugins = {
       })
     end,
   },
+  {
+    "windwp/nvim-ts-autotag",
+    enabled = true,
+    config = function()
+      require("nvim-treesitter.config").setup({
+        autotag = {
+          enabled = true
+        }
+      })
+    end
+  },
 
   -- To make a plugin not be loaded
   -- {
