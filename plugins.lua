@@ -4,6 +4,16 @@ local overrides = require("custom.configs.overrides")
 local plugins = {
 
   -- Override plugin definition options
+  --
+  {
+    "smpallen99/nvim-coverage",
+    enabled = true,
+    lazy = false,
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("coverage").setup()
+    end,
+  },
   {
     "kylechui/nvim-surround",
     enabled = true,
