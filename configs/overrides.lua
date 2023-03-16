@@ -10,7 +10,6 @@ M.treesitter = {
     "c",
     "markdown",
     "markdown_inline",
-    "vue",
   },
   indent = {
     enable = true,
@@ -31,8 +30,6 @@ M.mason = {
     "html-lsp",
     "typescript-language-server",
     "deno",
-    "elixirls",
-    "vuels",
   },
 }
 
