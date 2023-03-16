@@ -59,7 +59,16 @@ local plugins = {
       require("coverage").setup()
     end,
   },
-
+  {
+    "kylechui/nvim-surround",
+    enabled = true,
+    lazy = false,
+    config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+        })
+    end
+  },
 
   -- To make a plugin not be loaded
   -- {
