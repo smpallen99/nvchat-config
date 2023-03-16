@@ -47,6 +47,20 @@ local plugins = {
     end,
   },
 
+  -- 
+  -- Steve's plugins
+  --
+  {
+    "smpallen99/nvim-coverage",
+    enabled = true,
+    event = "BufEnter *.ex",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("coverage").setup()
+    end,
+  },
+
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
