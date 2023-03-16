@@ -34,6 +34,8 @@ M.general = {
     ["-"] = { ":split<CR>", "new horizontal split", opts = { nowait = true }},
     ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "Explorer" },
     ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", opts = { nowait = true }},
+    -- ["gd"] = { "vim.lsp.buf.definition", opts = { nowait = true }},
+    ["gD"] = { "<cmd>Telescope lsp_references<cr>", opts = { nowait = true }},
   },
 }
 
