@@ -34,6 +34,7 @@ M.mason = {
     "deno",
     "vue",
     "elixirls",
+    "emmet_ls",
   },
 }
 
