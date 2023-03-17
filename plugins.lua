@@ -88,6 +88,17 @@ local plugins = {
     },
     ft = { "fugitive" }
   },
+  {
+    "johmsalas/text-case.nvim",
+    enabled = true,
+    lazy = false,
+    config = function()
+      require('textcase').setup {}
+      require('telescope').load_extension('textcase')
+      vim.api.nvim_set_keymap('n', 'ga.', '<cmd>TextCaseOpenTelescope<CR>', { desc = "Telescope" })
+      vim.api.nvim_set_keymap('v', 'ga.', "<cmd>TextCaseOpenTelescope<CR>", { desc = "Telescope" })
+    end
+  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
@@ -121,15 +132,6 @@ wk.register({
   ["e"] = { "<cmd> NvimTreeToggle <CR>", "Explorer" },
   ["|"] = { ":vsplit<CR>", "New vert. split", opts = { nowait = true }},
   ["-"] = { ":split<CR>", "New horz. split", opts = { nowait = true }},
-  p = {
-    name = "Lazy",
-    l = { ":Lazy<CR>", "Lazy", opts = { nowait = true }},
-  },
-  n = {
-    name = "Line numbers",
-    n = { "<cmd> set nu! <CR>", "Toggle line number" },
-    r = { "<cmd> set rnu! <CR>", "Toggle relative number" },
-  },
   b = {
     name = "Buffers",
     j = { "<cmd>BufferLinePick<cr>", "Jump" },
@@ -153,6 +155,42 @@ wk.register({
     L = {
       "<cmd>BufferLineSortByExtension<cr>",
       "Sort by language",
+    },
+  },
+  C = {
+    name = "Text Case",
+    h = { "<cmd>lua require 'textcase'.current_word('to_dash_case')<cr>", "Dash case" },
+    n = { "<cmd>lua require 'textcase'.current_word('to_constant_case')<cr>", "Constant case" },
+    d = { "<cmd>lua require 'textcase'.current_word('to_dot_case')<cr>", "Dot case" },
+    z = { "<cmd>lua require 'textcase'.current_word('to_phrase_case')<cr>", "Phrase case" },
+    t = { "<cmd>lua require 'textcase'.current_word('to_title_case')<cr>", "Title case" },
+    a = { "<cmd>lua require 'textcase'.current_word('to_path_case')<cr>", "Path case" },
+    s = { "<cmd>lua require 'textcase'.current_word('to_snake_case')<cr>", "Snake case" },
+    c = { "<cmd>lua require 'textcase'.current_word('to_camel_case')<cr>", "Camel case" },
+    p = { "<cmd>lua require 'textcase'.current_word('to_pascal_case')<cr>", "Pascal case" },
+    o = {
+      name = "Operator",
+      s = { "<cmd>lua require 'textcase'.operator('to_snake_case')<cr>", "Op Snake case" },
+      h = { "<cmd>lua require 'textcase'.operator('to_dash_case')<cr>", "Dash case" },
+      n = { "<cmd>lua require 'textcase'.operator('to_constant_case')<cr>", "Constant case" },
+      d = { "<cmd>lua require 'textcase'.operator('to_dot_case')<cr>", "Dot case" },
+      z = { "<cmd>lua require 'textcase'.operator('to_phrase_case')<cr>", "Phrase case" },
+      t = { "<cmd>lua require 'textcase'.operator('to_title_case')<cr>", "Title case" },
+      a = { "<cmd>lua require 'textcase'.operator('to_path_case')<cr>", "Path case" },
+      c = { "<cmd>lua require 'textcase'.operator('to_camel_case')<cr>", "Camel case" },
+      p = { "<cmd>lua require 'textcase'.operator('to_pascal_case')<cr>", "Pascal case" },
+    },
+    r = {
+      name = "Rename",
+      s = { "<cmd>lua require 'textcase'.lsp_rename('to_snake_case')<cr>", "Op Snake case" },
+      h = { "<cmd>lua require 'textcase'.lsp_rename('to_dash_case')<cr>", "Dash case" },
+      n = { "<cmd>lua require 'textcase'.lsp_rename('to_constant_case')<cr>", "Constant case" },
+      d = { "<cmd>lua require 'textcase'.lsp_rename('to_dot_case')<cr>", "Dot case" },
+      z = { "<cmd>lua require 'textcase'.lsp_rename('to_phrase_case')<cr>", "Phrase case" },
+      t = { "<cmd>lua require 'textcase'.lsp_rename('to_title_case')<cr>", "Title case" },
+      a = { "<cmd>lua require 'textcase'.lsp_rename('to_path_case')<cr>", "Path case" },
+      c = { "<cmd>lua require 'textcase'.lsp_rename('to_camel_case')<cr>", "Camel case" },
+      p = { "<cmd>lua require 'textcase'.lsp_rename('to_pascal_case')<cr>", "Pascal case" },
     },
   },
   f = { "<cmd> Telescope find_files <CR>", "Find File" },
@@ -219,6 +257,11 @@ wk.register({
     },
     e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
   },
+  n = {
+    name = "Line numbers",
+    n = { "<cmd> set nu! <CR>", "Toggle line number" },
+    r = { "<cmd> set rnu! <CR>", "Toggle relative number" },
+  },
   N = {
     name = "NvChad",
     c = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
@@ -236,6 +279,20 @@ wk.register({
       "which-key query lookup",
     },
     t = { "<cmd> Telescope themes <CR>", "nvchad themes" },
+  },
+  o = {
+    name = "Coverage",
+    c = { "<cmd>Coverage<cr>", "Coverage" },
+    C = { "<cmd>CoverageClear<cr>", "Clear Coverage" },
+    h = { "<cmd>CoverageHide<cr>", "Hide Coverage" },
+    l = { "<cmd>CoverageLoad<cr>", "Load Coverage" },
+    s = { "<cmd>CoverageSummary<cr>", "Coverage Summary" },
+    S = { "<cmd>CoverageShow<cr>", "Show Coverage" },
+    t = { "<cmd>CoverageToggle<cr>", "Toggle Coverage" },
+  },
+  p = {
+    name = "Lazy",
+    l = { ":Lazy<CR>", "Lazy", opts = { nowait = true }},
   },
   s = {
     name = "Search",
